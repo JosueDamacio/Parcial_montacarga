@@ -1,0 +1,224 @@
+//7 segmentos
+#define arriba 13
+#define	arriba_derecha 12
+#define abajo_derecha 11
+#define abajo 10
+#define abajo_izquierda 9
+#define arriba_izquierda 8
+#define centro 7
+//leds
+#define led_movimiento 6
+#define led_detiene 5
+//botones
+#define boton_sube_uno 4
+#define boton_se_detiene 3
+#define boton_baja_uno 2
+//varaibles de control
+int i = 0;
+int pausa = LOW;
+int estado_anterior_boton = LOW;
+int estado_actual_boton = LOW;
+
+void setup(){
+  pinMode(led_movimiento, OUTPUT);
+  pinMode(led_detiene, OUTPUT);
+  pinMode(arriba, OUTPUT);
+  pinMode(arriba_derecha, OUTPUT);
+  pinMode(abajo_derecha, OUTPUT);
+  pinMode(abajo, OUTPUT);
+  pinMode(abajo_izquierda, OUTPUT);
+  pinMode(arriba_izquierda, OUTPUT);
+  pinMode(centro, OUTPUT);
+  pinMode(boton_sube_uno, INPUT);
+  pinMode(boton_se_detiene, INPUT);
+  pinMode(boton_baja_uno, INPUT);
+  Serial.begin(9600);
+  iniciar_montacargas_en_0();
+}
+void loop(){
+  int estado_actual_boton_actual = digitalRead(boton_se_detiene);
+
+  if (estado_actual_boton_actual != estado_anterior_boton){
+    if (estado_actual_boton_actual == HIGH){
+      pausa = !pausa;
+      delay(100);
+    }
+    estado_anterior_boton = estado_actual_boton_actual;
+  }
+  if (pausa == LOW){
+    if (digitalRead(boton_sube_uno) == HIGH){
+      i++;
+      if (i > 9)
+        i = 9;
+      piso_montacarga(i);
+      delay(100);
+    }
+    if (digitalRead(boton_baja_uno) == HIGH){
+      i--;
+      if (i < 0)
+        i = 0;
+      piso_montacarga(i);
+      delay(100);
+    }
+    digitalWrite(led_movimiento, HIGH);
+    digitalWrite(led_detiene, LOW);
+  } else {
+    digitalWrite(led_movimiento, LOW);
+    digitalWrite(led_detiene, HIGH);
+  }
+}
+void iniciar_montacargas_en_0(){
+  apaga_todos_los_led();
+  prende_numero_cero();
+  Serial.print("0");
+}
+void prende_led(int led){  	
+  digitalWrite(led, HIGH);
+}
+void mostrar_piso(String piso){
+  Serial.println(piso);
+}
+void apaga_todos_los_led(){
+  digitalWrite(arriba, LOW);
+  digitalWrite(arriba_derecha, LOW);
+  digitalWrite(arriba_izquierda, LOW);
+  digitalWrite(abajo, LOW);
+  digitalWrite(abajo_derecha, LOW);
+  digitalWrite(abajo_izquierda, LOW);
+  digitalWrite(centro, LOW);
+}
+void espera_3_segundos(){
+  delay(3000);
+}
+void prende_numero_cero(){
+    prende_led(arriba);
+    prende_led(arriba_derecha);
+    prende_led(abajo_derecha);
+    prende_led(abajo);
+    prende_led(abajo_izquierda);
+    prende_led(arriba_izquierda);
+}
+void prende_numero_uno(){
+    prende_led(arriba_derecha);
+    prende_led(abajo_derecha);
+}
+void prende_numero_dos(){
+    prende_led(arriba);
+    prende_led(arriba_derecha);
+    prende_led(centro);
+    prende_led(abajo_izquierda);
+    prende_led(abajo);
+}
+void prende_numero_tres(){
+    prende_led(arriba);
+    prende_led(arriba_derecha);
+    prende_led(centro);
+    prende_led(abajo_derecha);
+    prende_led(abajo);
+}
+void prende_numero_cuatro(){
+    prende_led(arriba_izquierda);
+    prende_led(centro);
+    prende_led(arriba_derecha);
+    prende_led(abajo_derecha);
+}
+void prende_numero_cinco(){
+    prende_led(arriba);
+    prende_led(arriba_izquierda);
+    prende_led(centro);
+    prende_led(abajo_derecha);
+    prende_led(abajo);
+}
+void prende_numero_seis(){
+    prende_led(arriba);
+    prende_led(centro);
+    prende_led(abajo_derecha);
+    prende_led(abajo);
+    prende_led(abajo_izquierda);
+    prende_led(arriba_izquierda);
+}
+void prende_numero_siete(){
+    prende_led(arriba);
+    prende_led(arriba_derecha);
+    prende_led(abajo_derecha);
+}
+void prende_numero_ocho(){
+    prende_led(arriba);
+    prende_led(arriba_derecha);
+    prende_led(abajo_derecha);
+    prende_led(abajo);
+    prende_led(abajo_izquierda);
+    prende_led(arriba_izquierda);
+    prende_led(centro);
+}
+void prende_numero_nueve(){
+    prende_led(arriba);
+    prende_led(arriba_derecha);
+    prende_led(abajo_derecha);
+    prende_led(centro);
+    prende_led(arriba_izquierda);
+}
+void piso_montacarga(int i){
+    switch (i)
+    { 
+    case 0:
+      	espera_3_segundos();
+        prende_numero_cero();
+        Serial.print("0");
+        break;
+    case 1:
+      	espera_3_segundos();
+        apaga_todos_los_led();
+        prende_numero_uno();
+        Serial.print("1");
+        break;
+    case 2:
+      	espera_3_segundos();
+        apaga_todos_los_led();
+        prende_numero_dos();
+        Serial.print("2");
+        break;
+    case 3:
+      	espera_3_segundos();
+        apaga_todos_los_led();
+        prende_numero_tres();
+        Serial.print("3");
+        break;
+    case 4:
+      	espera_3_segundos();
+        apaga_todos_los_led();
+        prende_numero_cuatro();
+        Serial.print("4");
+        break;
+    case 5:
+      	espera_3_segundos();
+        apaga_todos_los_led();
+        prende_numero_cinco();
+        Serial.print("5");
+        break;
+    case 6:
+      	espera_3_segundos();
+        apaga_todos_los_led();
+        prende_numero_seis();
+        Serial.print("6");
+        break;
+    case 7:
+      	espera_3_segundos();
+        apaga_todos_los_led();
+        prende_numero_siete();
+        Serial.print("7");
+        break;
+    case 8:
+      	espera_3_segundos();
+        apaga_todos_los_led();
+        prende_numero_ocho();
+        Serial.print("8");
+        break;
+    case 9:
+      	espera_3_segundos();
+        apaga_todos_los_led();
+        prende_numero_nueve();
+        Serial.print("9");
+        break;
+    }
+}
