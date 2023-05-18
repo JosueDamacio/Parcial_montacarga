@@ -259,7 +259,7 @@ void piso_montacarga(int i){
 }
 ~~~
 
-![imag_monitor_serial](./imagenes/monitor_serial.png)
+![imag_monitor_serial](./imagenes/monitor_en_serie.png)
 
 --------------------------------------------------------------
 
