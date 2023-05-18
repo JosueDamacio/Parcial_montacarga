@@ -146,7 +146,7 @@ Pero si en la simulación no se presiona el boton, "pausa" sigue en "LOW" y ento
   }
 ~~~
 
-Así lucen los botones:
+Así se ven los botones:
 
 ![imagen_de_botones](./imagenes/botones.png)
 
