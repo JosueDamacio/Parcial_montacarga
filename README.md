@@ -231,7 +231,7 @@ void prende_numero_dos(){
 
 ### Funcionamiento del switch:
 
-Acá se retoma el uso de todas las funciones antes mencionadas. Se evalua el valor de i y en todos los casos hay una espera de 3 segundos, también se ejecuta la funcion de apagar leds para que no se prendan leds no deseados al subir o bajar pisos. Luego se prende el numero del piso actual en el siplay 7 segmentos y taambién se imprime el numero de piso en el monitor serial
+Acá se retoma el uso de todas las funciones antes mencionadas. Se evalua el valor de i y en todos los casos hay una espera de 3 segundos, también se ejecuta la funcion de apagar leds para que no se prendan leds no deseados al subir o bajar pisos. Luego se prende el numero del piso actual en el siplay 7 segmentos y taambién se imprime el numero de piso en el monitor serial. Ejemplos de los numeros 0, 1 y 2:
 
 ~~~
 void piso_montacarga(int i){
