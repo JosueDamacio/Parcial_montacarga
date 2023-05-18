@@ -4,7 +4,7 @@
 
 imagen de tinkercad:
 
-![imagen_del_pryecto](./imagen/tinkercad.png)
+![imagen_del_pryecto](./imagenes/tinkercad.png)
 
 ### Alumno:
 * Josue Damacio
@@ -148,16 +148,16 @@ Pero si en la simulación no se presiona el boton, "pausa" sigue en "LOW" y ento
 
 Así lucen los botones:
 
-![imagen_de_botones](./imagen/botones.png)
+![imagen_de_botones](./imagenes/botones.png)
 
 
 En movimiento (ver led verde):
 
-![imag_en_movimiento](./imagen/en_funcionamiento.png)
+![imag_en_movimiento](./imagenes/en_funcionamiento.png)
 
 Pausa (ver led rojo):
 
-![imag_pausa](./imagen/en_pausa.png)
+![imag_pausa](./imagenes/en_pausa.png)
 
 
 ----------------------
@@ -259,7 +259,7 @@ void piso_montacarga(int i){
 }
 ~~~
 
-![imag_monitor_serial](./imagen/monitor_serial.png)
+![imag_monitor_serial](./imagenes/monitor_serial.png)
 
 --------------------------------------------------------------
 
