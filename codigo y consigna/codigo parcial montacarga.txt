@@ -36,14 +36,14 @@ void setup(){
   iniciar_montacargas_en_0();
 }
 void loop(){
-  int estado_actual_boton_actual = digitalRead(boton_se_detiene);
+  int estado_actual_boton = digitalRead(boton_se_detiene);
 
-  if (estado_actual_boton_actual != estado_anterior_boton){
-    if (estado_actual_boton_actual == HIGH){
+  if (estado_actual_boton != estado_anterior_boton){
+    if (estado_actual_boton == HIGH){
       pausa = !pausa;
       delay(100);
     }
-    estado_anterior_boton = estado_actual_boton_actual;
+    estado_anterior_boton = estado_actual_boton;
   }
   if (pausa == LOW){
     if (digitalRead(boton_sube_uno) == HIGH){
@@ -163,6 +163,7 @@ void piso_montacarga(int i){
     { 
     case 0:
       	espera_3_segundos();
+      	apaga_todos_los_led();
         prende_numero_cero();
         Serial.print("0");
         break;
